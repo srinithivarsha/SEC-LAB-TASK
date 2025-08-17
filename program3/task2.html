@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Remove Duplicates from Array</title>
+</head>
+<body>
+  <h2>Remove Duplicates from Array</h2>
+
+  <p>Sample Array: [1, 2, 2, 3, 4, 4, 5]</p>
+  <button onclick="removeDuplicates()">Remove Duplicates</button>
+
+  <h3>Result:</h3>
+  <div id="result"></div>
+
+  <script>
+    function removeDuplicates() {
+      let arr = [1, 2, 2, 3, 4, 4, 5];
+
+      let uniqueArr = [...new Set(arr)];
+
+      document.getElementById("result").innerHTML =
+        "Original: [" + arr.join(", ") + "]<br>" +
+        "Without Duplicates: [" + uniqueArr.join(", ") + "]";
+    }
+  </script>
+</body>
+</html>

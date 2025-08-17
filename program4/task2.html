@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Validate Email Field</title>
+</head>
+<body>
+  <h2>Validate Email Field</h2>
+
+  <label>Enter Email:</label>
+  <input type="text" id="emailField">
+  <button onclick="validateEmail()">Validate</button>
+
+  <h3>Result:</h3>
+  <div id="result"></div>
+
+  <script>
+    function validateEmail() {
+      let email = document.getElementById("emailField").value.trim();
+
+      if (email === "") {
+        document.getElementById("result").innerHTML =
+          "<span style='color:red;'>Email cannot be empty.</span>";
+        return;
+      }
+
+     
+      let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (regex.test(email)) {
+        document.getElementById("result").innerHTML =
+          `<span style='color:green;'>${email} is valid.</span>`;
+      } else {
+        document.getElementById("result").innerHTML =
+          `<span style='color:red;'>${email} is invalid. Invalid email format.</span>`;
+      }
+    }
+  </script>
+</body>
+</html>
