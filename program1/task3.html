@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basic Calculator</title>
+</head>
+<body>
+  <h2>Basic Calculator</h2>
+
+  <label>Enter Number 1:</label>
+  <input type="number" id="num1"><br><br>
+
+  <label>Enter Number 2:</label>
+  <input type="number" id="num2"><br><br>
+
+  
+  <button onclick="add()">Add</button>
+  <button onclick="subtract()">Subtract</button>
+  <button onclick="multiply()">Multiply</button>
+  <button onclick="divide()">Divide</button>
+
+  <h3>Result:</h3>
+  <div id="result"></div>
+
+  <script>
+    function getNumbers() {
+      let n1 = parseFloat(document.getElementById("num1").value);
+      let n2 = parseFloat(document.getElementById("num2").value);
+
+      if (isNaN(n1) || isNaN(n2)) {
+        document.getElementById("result").innerHTML = "⚠️ Please enter valid numbers.";
+        return null;
+      }
+      return { n1, n2 };
+    }
+
+    function add() {
+      let nums = getNumbers();
+      if (!nums) return;
+      document.getElementById("result").innerHTML =
+        `${nums.n1} + ${nums.n2} = ${nums.n1 + nums.n2}`;
+    }
+
+    function subtract() {
+      let nums = getNumbers();
+      if (!nums) return;
+      document.getElementById("result").innerHTML =
+        `${nums.n1} - ${nums.n2} = ${nums.n1 - nums.n2}`;
+    }
+
+    function multiply() {
+      let nums = getNumbers();
+      if (!nums) return;
+      document.getElementById("result").innerHTML =
+        `${nums.n1} × ${nums.n2} = ${nums.n1 * nums.n2}`;
+    }
+
+    function divide() {
+      let nums = getNumbers();
+      if (!nums) return;
+      if (nums.n2 === 0) {
+        document.getElementById("result").innerHTML = "❌ Division by zero not allowed!";
+      } else {
+        document.getElementById("result").innerHTML =
+          `${nums.n1} ÷ ${nums.n2} = ${nums.n1 / nums.n2}`;
+      }
+    }
+  </script>
+</body>
+</html>
