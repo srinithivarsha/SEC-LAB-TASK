@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Guessing Game with Loop</title>
+</head>
+<body>
+  <h2>Number Guessing Game</h2>
+
+  <label>Enter your guess (1 - 100): </label>
+  <input type="number" id="userInput" min="1" max="100">
+  <button onclick="checkNumber()">Guess</button>
+
+  <h3>Result:</h3>
+  <div id="result"></div>
+
+  <script>
+    
+    const predefinedNumber = 75;
+    let attempts = 0;
+
+    function checkNumber() {
+      let userNum = parseInt(document.getElementById("userInput").value);
+      attempts++;
+
+      if (isNaN(userNum)) {
+        document.getElementById("result").innerHTML += "<p>⚠️ Please enter a number.</p>";
+        return;
+      }
+
+      if (userNum < predefinedNumber) {
+        document.getElementById("result").innerHTML += `<p>${userNum} → Too Low!</p>`;
+      } else if (userNum > predefinedNumber) {
+        document.getElementById("result").innerHTML += `<p>${userNum} → Too High!</p>`;
+      } else {
+        document.getElementById("result").innerHTML += `<p>🎉 Correct! You found it in ${attempts} attempts.</p>`;
+        
+        document.getElementById("userInput").disabled = true;
+      }
+      document.getElementById("userInput").value = "";
+    }
+  </script>
+</body>
+</html>
