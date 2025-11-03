@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Operators in JavaScript</title>
+</head>
+<body style="font-family: Arial; text-align:center; margin-top: 50px;">
+  <h2>Task 3: Operators in JavaScript</h2>
+
+  <label>Enter first number (a): </label>
+  <input type="number" id="num1"><br><br>
+
+  <label>Enter second number (b): </label>
+  <input type="number" id="num2"><br><br>
+
+  <button onclick="calculate()">Show Results</button>
+
+  <div id="output" style="margin-top:30px; text-align:left; display:inline-block;"></div>
+
+  <script>
+    function calculate() {
+      let a = parseInt(document.getElementById("num1").value);
+      let b = parseInt(document.getElementById("num2").value);
+      let result = "";
+
+      if (isNaN(a) || isNaN(b)) {
+        document.getElementById("output").innerHTML = "Please enter valid numbers.";
+        return;
+      }
+
+      result += "<b>Arithmetic Operators:</b><br>";
+      result += "a + b = " + (a + b) + "<br>";
+      result += "a - b = " + (a - b) + "<br>";
+      result += "a * b = " + (a * b) + "<br>";
+      result += "a / b = " + (a / b) + "<br>";
+      result += "a % b = " + (a % b) + "<br><br>";
+
+      result += "<b>Assignment Operators:</b><br>";
+      let x = a;
+      x += b;
+      result += "x += b → " + x + "<br>";
+      x -= b;
+      result += "x -= b → " + x + "<br><br>";
+
+      result += "<b>Relational Operators:</b><br>";
+      result += "a == b → " + (a == b) + "<br>";
+      result += "a === b → " + (a === b) + "<br>";
+      result += "a != b → " + (a != b) + "<br>";
+      result += "a !== b → " + (a !== b) + "<br>";
+      result += "a > b → " + (a > b) + "<br>";
+      result += "a < b → " + (a < b) + "<br>";
+      result += "a >= b → " + (a >= b) + "<br>";
+      result += "a <= b → " + (a <= b) + "<br><br>";
+
+      result += "<b>Logical Operators:</b><br>";
+      let p = (a > 5), q = (b > 5);
+      result += "(a>5) && (b>5) → " + (p && q) + "<br>";
+      result += "(a>5) || (b>5) → " + (p || q) + "<br>";
+      result += "!(a>5) → " + (!p) + "<br><br>";
+
+      result += "<b>Conditional (Ternary) Operator:</b><br>";
+      result += "Is a greater than b? → " + ((a > b) ? "Yes" : "No") + "<br><br>";
+
+      result += "<b>Bitwise Operators:</b><br>";
+      result += "a & b = " + (a & b) + "<br>";
+      result += "a | b = " + (a | b) + "<br>";
+      result += "a ^ b = " + (a ^ b) + "<br>";
+      result += "~a = " + (~a) + "<br>";
+      result += "a << 1 = " + (a << 1) + "<br>";
+      result += "a >> 1 = " + (a >> 1) + "<br><br>";
+
+      result += "<b>Increment and Decrement:</b><br>";
+      let y = a;
+      result += "y++ = " + (y++) + "<br>";
+      result += "After y++ → " + y + "<br>";
+      result += "y-- = " + (y--) + "<br>";
+      result += "After y-- → " + y + "<br>";
+
+      document.getElementById("output").innerHTML = result;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Destructuring, Notation & Iteration</title>
+</head>
+<body>
+<h2>Destructuring, Notation & Iteration</h2>
+<button onclick="runCode()">Run Code</button>
+<p>In console</p>
+
+<script>
+function runCode() {
+  console.clear();
+
+  let colors = ["red", "green", "blue", "yellow"];
+  let [first, second, ...rest] = colors;
+  console.log("Array destructuring:", first, second, rest);
+
+  let student = {
+    name: "Seth",
+    age: 21,
+    course: "Computer Science",
+    address: {
+      city: "Chennai",
+      country: "India"
+    }
+  };
+
+  let { name, age, course, address } = student;
+  console.log("Object destructuring:", name, age, course);
+  let { city, country } = address;
+  console.log("Nested destructuring:", city, country);
+
+  console.log("Dot notation:", student.name);
+  console.log("Bracket notation:", student["course"]);
+
+  console.log("Iterating using for-in:");
+  for (let key in student) {
+    if (typeof student[key] !== "object") {
+      console.log(key + ":", student[key]);
+    }
+  }
+
+  console.log("Iterating using Object.keys:");
+  Object.keys(student).forEach(key => {
+    if (typeof student[key] !== "object") {
+      console.log(key + ":", student[key]);
+    }
+  });
+
+  console.log("Iterating using Object.entries:");
+  for (let [key, value] of Object.entries(student)) {
+    if (typeof value !== "object") {
+      console.log(key + ":", value);
+    }
+  }
+}
+</script>
+</body>
+</html>
+

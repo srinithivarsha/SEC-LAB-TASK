@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Validate Name Field</title>
+</head>
+<body style="font-family: Arial; text-align: center; margin-top: 80px;">
+  <h2>Program: Validate Name Field</h2>
+
+  <label>Enter your name:</label><br><br>
+  <input type="text" id="nameInput" placeholder="e.g. John Doe" style="width: 250px;"><br><br>
+
+  <button onclick="validateName()">Validate</button>
+
+  <h3 id="result"></h3>
+
+  <script>
+    function validateName() {
+      let name = document.getElementById("nameInput").value.trim();
+      let pattern = /^[A-Za-z\s]+$/;
+
+      if (name === "") {
+        document.getElementById("result").innerHTML = "⚠️ Name field cannot be empty.";
+        return;
+      }
+
+      if (!pattern.test(name)) {
+        document.getElementById("result").innerHTML = "❌ Invalid: Name can only contain letters and spaces.";
+      } else {
+        document.getElementById("result").innerHTML = "✅ " + name + " is valid.";
+      }
+    }
+  </script>
+</body>
+</html>

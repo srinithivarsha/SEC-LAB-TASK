@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Data Types & Type Conversion</title>
+</head>
+<body style="font-family: Arial; text-align: center; margin-top: 80px;">
+  <h2>Task 2: Data Types & Type Conversion</h2>
+  <p>Open the <b>Console</b> (Right-click → Inspect → Console) to view outputs.</p>
+
+  <script>
+    console.log("=== Task 2: Data Types & Type Conversion ===");
+
+   
+    let num = 42;                     
+    let str = "123";                  
+    let bool = true;                  
+    let nothing = null;               
+    let notDefined;                   
+    let obj = { name: "Sri", age: 20 }; 
+    let sym = Symbol("unique");       
+
+    console.log("Number:", num, "→ Type:", typeof num);
+    console.log("String:", str, "→ Type:", typeof str);
+    console.log("Boolean:", bool, "→ Type:", typeof bool);
+    console.log("Null:", nothing, "→ Type:", typeof nothing);
+    console.log("Undefined:", notDefined, "→ Type:", typeof notDefined);
+    console.log("Object:", obj, "→ Type:", typeof obj);
+    console.log("Symbol:", sym, "→ Type:", typeof sym);
+
+    console.log("\n=== Type Conversion Examples ===");
+
+    let strToNum = Number(str);        
+    let numToStr = String(num);     
+    let boolToStr = String(bool);      
+    let strToBool = Boolean(str);      
+
+    console.log("String to Number:", strToNum, "→ Type:", typeof strToNum);
+    console.log("Number to String:", numToStr, "→ Type:", typeof numToStr);
+    console.log("Boolean to String:", boolToStr, "→ Type:", typeof boolToStr);
+    console.log("String to Boolean:", strToBool, "→ Type:", typeof strToBool);
+
+    console.log("\n=== Implicit Type Conversions ===");
+    console.log("'5' + 2 =", '5' + 2, "→ String concatenation");
+    console.log("'5' - 2 =", '5' - 2, "→ Numeric subtraction");
+    console.log("true + 1 =", true + 1, "→ true = 1");
+    console.log("false + 1 =", false + 1, "→ false = 0");
+
+    console.log("Task 2 completed.");
+  </script>
+</body>
+</html>

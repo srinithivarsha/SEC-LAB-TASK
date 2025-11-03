@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Validate Password Field</title>
+</head>
+<body style="font-family: Arial; text-align: center; margin-top: 80px;">
+  <h2>Program: Validate Password Field</h2>
+
+  <label>Enter your password:</label><br><br>
+  <input type="password" id="passwordInput" placeholder="Enter password" style="width: 250px;"><br><br>
+
+  <button onclick="validatePassword()">Validate</button>
+
+  <h3 id="result"></h3>
+
+  <script>
+    function validatePassword() {
+      let password = document.getElementById("passwordInput").value;
+
+      if (password.trim() === "") {
+        document.getElementById("result").innerHTML = "⚠️ Password field cannot be empty.";
+        return;
+      }
+
+      let minLength = /.{8,}/;
+      let hasUppercase = /[A-Z]/;
+      let hasNumber = /[0-9]/;
+
+      if (!minLength.test(password)) {
+        document.getElementById("result").innerHTML = "❌ Password must be at least 8 characters long.";
+      } 
+      else if (!hasUppercase.test(password)) {
+        document.getElementById("result").innerHTML = "❌ Password must contain at least one uppercase letter.";
+      } 
+      else if (!hasNumber.test(password)) {
+        document.getElementById("result").innerHTML = "❌ Password must contain at least one number.";
+      } 
+      else {
+        document.getElementById("result").innerHTML = "✅ Password is valid.";
+      }
+    }
+  </script>
+</body>
+</html>

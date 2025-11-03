@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Math & String Built-in Functions</title>
+</head>
+<body>
+<h2>Math & String Built-in Functions</h2>
+<button onclick="runCode()">Run Code</button>
+<p>output in console</p>
+
+<script>
+function runCode() {
+  console.clear();
+
+  let randomNum = Math.random() * 100;
+  console.log("Random number:", randomNum);
+  console.log("Rounded down:", Math.floor(randomNum));
+  console.log("Rounded up:", Math.ceil(randomNum));
+
+  let nums = [5, 10, 3, 22, 8];
+  console.log("Numbers:", nums);
+  console.log("Min value:", Math.min(...nums));
+  console.log("Max value:", Math.max(...nums));
+
+  let str = "Hello JavaScript World";
+  console.log("Original string:", str);
+  console.log("Uppercase:", str.toUpperCase());
+  console.log("Lowercase:", str.toLowerCase());
+  console.log("Substring (0–5):", str.substring(0, 5));
+  console.log("Includes 'Java':", str.includes("Java"));
+  console.log("Replace 'World' with 'Developers':", str.replace("World", "Developers"));
+}
+</script>
+</body>
+</html>

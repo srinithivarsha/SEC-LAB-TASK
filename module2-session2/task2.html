@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Array Creation and Basic Operations</title>
+</head>
+<body>
+<h2>Array Creation and Basic Operations</h2>
+<button onclick="runCode()">Run Code</button>
+<p>in console</p>
+
+<script>
+function runCode() {
+  console.clear();
+
+  let numbers = [10, 20, 30, 40, 50];
+  let fruits = ["apple", "banana", "cherry"];
+
+  console.log("Numbers array:", numbers);
+  console.log("Fruits array:", fruits);
+
+  console.log("First number:", numbers[0]);
+  console.log("Second fruit:", fruits[1]);
+
+  numbers[2] = 35;
+  fruits[0] = "mango";
+  console.log("Modified arrays:", numbers, fruits);
+
+  console.log("Numbers array length:", numbers.length);
+  console.log("Fruits array length:", fruits.length);
+
+  numbers.push(60);
+  fruits.push("grape");
+  console.log("After push:", numbers, fruits);
+
+  numbers.pop();
+  fruits.pop();
+  console.log("After pop:", numbers, fruits);
+
+  numbers.shift();
+  fruits.shift();
+  console.log("After shift:", numbers, fruits);
+
+  numbers.unshift(5);
+  fruits.unshift("orange");
+  console.log("After unshift:", numbers, fruits);
+}
+</script>
+</body>
+</html>

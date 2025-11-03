@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Working with Objects and Methods</title>
+</head>
+<body>
+<h2>Working with Objects and Methods</h2>
+<button onclick="runCode()">Run Code</button>
+<p>In console</p>
+
+<script>
+function runCode() {
+  console.clear();
+
+  let student = {
+    name: "Seth",
+    age: 20,
+    course: "Computer Science",
+    displayInfo: function() {
+      console.log("Name:", this.name);
+      console.log("Age:", this.age);
+      console.log("Course:", this.course);
+    }
+  };
+
+  console.log("Original Object:");
+  student.displayInfo();
+
+  console.log("Accessing properties:");
+  console.log("Student name:", student.name);
+  console.log("Student age:", student["age"]);
+
+  console.log("Modifying properties:");
+  student.age = 21;
+  student.course = "Data Analytics";
+  console.log("Updated Object:");
+  student.displayInfo();
+
+  console.log("Adding new property:");
+  student.college = "ABC University";
+  console.log(student);
+}
+</script>
+</body>
+</html>
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Object Destructuring and Spread</title>
+</head>
+<body>
+<h2>Object Destructuring and Spread</h2>
+<button onclick="runCode()">Run Code</button>
+<p>in console</p>
+
+<script>
+function runCode() {
+  console.clear();
+
+  let student = {
+    name: "Seth",
+    age: 21,
+    course: "Computer Science",
+    address: { city: "Chennai", country: "India" }
+  };
+
+  let { name, age, course } = student;
+  console.log("Destructured values:", name, age, course);
+
+  let { city, country } = student.address;
+  console.log("Nested destructuring:", city, country);
+
+  let { grade = "A+" } = student;
+  console.log("Default value destructuring:", grade);
+
+  let clone = { ...student };
+  console.log("Cloned object:", clone);
+
+  let extraInfo = { college: "ABC University", year: 3 };
+  let merged = { ...student, ...extraInfo };
+  console.log("Merged object:", merged);
+}
+</script>
+</body>
+</html>

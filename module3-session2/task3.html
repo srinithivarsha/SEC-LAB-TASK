@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Function Context & Advanced Calls</title>
+</head>
+<body>
+<h2>Function Context & Advanced Calls</h2>
+<button onclick="runCode()">Run Code</button>
+<p>In console</p>
+
+<script>
+function runCode() {
+  console.clear();
+
+  let person1 = { name: "Seth" };
+  let person2 = { name: "Anya" };
+
+  function greet(greeting, place) {
+    console.log(`${greeting}, I am ${this.name} from ${place}`);
+  }
+
+  greet.call(person1, "Hello", "Chennai");
+  greet.apply(person2, ["Hi", "Bangalore"]);
+
+  let boundGreet = greet.bind(person1, "Hey", "Delhi");
+  boundGreet();
+
+  console.log("Using call() passes arguments individually and sets 'this' immediately.");
+  console.log("Using apply() passes arguments as an array and sets 'this' immediately.");
+  console.log("Using bind() creates a new function with permanently bound 'this'.");
+}
+</script>
+</body>
+</html>

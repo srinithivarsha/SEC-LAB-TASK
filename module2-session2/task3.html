@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Array Iteration and Loops</title>
+</head>
+<body>
+<h2>Array Iteration and Loops</h2>
+<button onclick="runCode()">Run Code</button>
+<p>In console</p>
+
+<script>
+function runCode() {
+  console.clear();
+
+  let numbers = [2, 4, 6, 8, 10];
+  console.log("Original array:", numbers);
+
+  console.log("Using forEach:");
+  numbers.forEach(num => console.log(num));
+
+  let squares = numbers.map(num => num * num);
+  console.log("Using map (squared values):", squares);
+
+  console.log("Using for-in (indexes):");
+  for (let index in numbers) {
+    console.log(index, "=>", numbers[index]);
+  }
+
+  console.log("Using for-of (values):");
+  for (let value of numbers) {
+    console.log(value);
+  }
+}
+</script>
+</body>
+</html>

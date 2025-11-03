@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basic Calculator</title>
+</head>
+<body style="font-family: Arial; text-align: center; margin-top: 50px;">
+  <h2>Program 3: Basic Calculator Setup</h2>
+
+  <label>Enter Number 1:</label>
+  <input type="number" id="num1" placeholder="Enter first number"><br><br>
+
+  <label>Enter Number 2:</label>
+  <input type="number" id="num2" placeholder="Enter second number"><br><br>
+
+  <button onclick="calculate('add')">Addition (+)</button>
+  <button onclick="calculate('subtract')">Subtraction (-)</button>
+  <button onclick="calculate('multiply')">Multiplication (×)</button>
+  <button onclick="calculate('divide')">Division (÷)</button>
+
+  <h3 id="result"></h3>
+
+  <script>
+    function calculate(operation) {
+      let number1 = parseFloat(document.getElementById("num1").value);
+      let number2 = parseFloat(document.getElementById("num2").value);
+
+      if (isNaN(number1) || isNaN(number2)) {
+        document.getElementById("result").innerHTML = "⚠️ Please enter valid numbers.";
+        return;
+      }
+
+      let result;
+      if (operation === "add") result = number1 + number2;
+      else if (operation === "subtract") result = number1 - number2;
+      else if (operation === "multiply") result = number1 * number2;
+      else if (operation === "divide") {
+        if (number2 === 0) {
+          document.getElementById("result").innerHTML = "Division by zero is not allowed.";
+          return;
+        }
+        result = number1 / number2;
+      }
+
+      document.getElementById("result").innerHTML = `Result: ${result}`;
+    }
+  </script>
+</body>
+</html>

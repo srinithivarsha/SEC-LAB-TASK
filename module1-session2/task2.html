@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Loop Control Practice</title>
+</head>
+<body style="font-family: Arial; text-align:center; margin-top:50px;">
+  <h2>Task 2: Loop Control Practice</h2>
+
+  <h3>While Loop (Print Numbers 1 to 10)</h3>
+  <button onclick="whileLoop()">Run While Loop</button><br><br>
+
+  <h3>Do-While Loop (Enter number until correct)</h3>
+  <button onclick="doWhileLoop()">Run Do-While Loop</button><br><br>
+
+  <h3>For Loop (Sum of First N Natural Numbers)</h3>
+  <label>Enter N:</label>
+  <input type="number" id="n"><br><br>
+  <button onclick="forLoop()">Run For Loop</button><br><br>
+
+  <h3>Nested For Loop (Multiplication Table)</h3>
+  <label>Enter a number:</label>
+  <input type="number" id="tableNum"><br><br>
+  <button onclick="nestedForLoop()">Show Multiplication Table</button><br><br>
+
+  <div id="output" style="margin-top:40px; text-align:left; display:inline-block;"></div>
+
+  <script>
+    function whileLoop() {
+      let i = 1;
+      let result = "<b>Numbers from 1 to 10:</b><br>";
+      while (i <= 10) {
+        result += i + " ";
+        i++;
+      }
+      document.getElementById("output").innerHTML = result;
+    }
+
+    function doWhileLoop() {
+      let correctNumber = 7;
+      let guess;
+      do {
+        guess = parseInt(prompt("Guess a number between 1 and 10:"));
+      } while (guess !== correctNumber);
+      document.getElementById("output").innerHTML = "🎉 Correct! The number was " + correctNumber;
+    }
+
+    function forLoop() {
+      let n = parseInt(document.getElementById("n").value);
+      let sum = 0;
+      for (let i = 1; i <= n; i++) {
+        sum += i;
+      }
+      document.getElementById("output").innerHTML = "Sum of first " + n + " natural numbers = " + sum;
+    }
+
+    function nestedForLoop() {
+      let num = parseInt(document.getElementById("tableNum").value);
+      let result = "<b>Multiplication Table for " + num + ":</b><br>";
+      for (let i = 1; i <= 10; i++) {
+        result += num + " × " + i + " = " + (num * i) + "<br>";
+      }
+      document.getElementById("output").innerHTML = result;
+    }
+  </script>
+</body>
+</html>

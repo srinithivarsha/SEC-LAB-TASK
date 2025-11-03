@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Complex Data & Parameter Handling</title>
+</head>
+<body>
+<h2>Complex Data & Parameter Handling</h2>
+<button onclick="runCode()">Run Code</button>
+<p>In console</p>
+
+<script>
+function runCode() {
+  console.clear();
+
+  let users = [
+    { name: "Seth", age: 21, address: { city: "Chennai", country: "India" } },
+    { name: "Anya", age: 22, address: { city: "Bangalore", country: "India" } },
+    { name: "Riya", age: 20, address: { city: "Hyderabad", country: "India" } }
+  ];
+
+  console.log("All users:", users);
+  console.log("First user's city:", users[0].address.city);
+
+  function sumNumbers(...nums) {
+    let total = 0;
+    for (let n of nums) total += n;
+    console.log("Sum of numbers:", total);
+  }
+  sumNumbers(10, 20, 30, 40);
+
+  let arr1 = [1, 2, 3];
+  let arr2 = [4, 5, 6];
+  let combined = [...arr1, ...arr2];
+  console.log("Combined arrays using spread:", combined);
+
+  let product = { id: 1, name: "Laptop", price: 50000 };
+  let clonedProduct = { ...product };
+  let updatedProduct = { ...product, price: 55000 };
+  console.log("Cloned product:", clonedProduct);
+  console.log("Updated product:", updatedProduct);
+
+  function displayUser({ name, age, address: { city } }) {
+    console.log(`User: ${name}, Age: ${age}, City: ${city}`);
+  }
+
+  displayUser(users[1]);
+}
+</script>
+</body>
+</html>

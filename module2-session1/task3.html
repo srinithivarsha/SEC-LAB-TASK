@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Callback Functions & Scopes</title>
+</head>
+<body>
+<h2>Callback Functions & Scopes</h2>
+<button onclick="runCode()">Run Code</button>
+<p>output in console</p>
+
+<script>
+function performTask(taskName, callback) {
+  console.log("Starting task:", taskName);
+  callback();
+}
+
+function taskDone() {
+  console.log("Task completed successfully");
+}
+
+function scopeExample() {
+  var a = "Global var";
+  let b = "Block let";
+  const c = "Block const";
+  console.log(a);
+  console.log(b);
+  console.log(c);
+  if (true) {
+    var x = "var inside block";
+    let y = "let inside block";
+    const z = "const inside block";
+    console.log(x);
+    console.log(y);
+    console.log(z);
+  }
+  console.log(x);
+}
+
+function runCode() {
+  console.clear();
+  performTask("Download File", taskDone);
+  scopeExample();
+}
+</script>
+</body>
+</html>
+

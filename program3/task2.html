@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Remove Duplicates from Array</title>
+</head>
+<body style="font-family: Arial; text-align: center; margin-top: 80px;">
+  <h2>Program 3: Remove Duplicates from Array</h2>
+
+  <label>Enter array elements (comma separated):</label><br><br>
+  <input type="text" id="arrayInput" placeholder="e.g. 1,2,2,3,4,4,5" style="width: 300px;"><br><br>
+
+  <button onclick="removeDuplicates()">Remove Duplicates</button>
+
+  <h3 id="result"></h3>
+
+  <script>
+    function removeDuplicates() {
+      let input = document.getElementById("arrayInput").value;
+
+      if (input.trim() === "") {
+        document.getElementById("result").innerHTML = "⚠️ Please enter array elements.";
+        return;
+      }
+
+      let arr = input.split(",").map(Number);
+      let uniqueArr = [...new Set(arr)];
+
+      document.getElementById("result").innerHTML =
+        "Array without duplicates: [" + uniqueArr.join(", ") + "]";
+    }
+  </script>
+</body>
+</html>

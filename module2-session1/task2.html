@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Function Expressions & Arrow Functions</title>
+</head>
+<body>
+<h2>Function Expressions & Arrow Functions</h2>
+<button onclick="runFunctions()">Run Functions</button>
+<p>output in console</p>
+
+<script>
+
+function greet(name) {
+  return "Hello, " + name + "!";
+}
+
+const add = function(a, b) {
+  return a + b;
+};
+
+
+const multiply = (a, b) => a * b;
+
+const square = n => n * n;
+
+const sayHi = () => "Hi there!";
+
+function runFunctions() {
+  console.clear();
+  console.log(greet("Seth"));
+  console.log("Addition:", add(4, 7));
+  console.log("Multiplication:", multiply(3, 5));
+  console.log("Square:", square(6));
+  console.log(sayHi());
+}
+</script>
+</body>
+</html>
+

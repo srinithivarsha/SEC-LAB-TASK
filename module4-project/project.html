@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employee Management System</title>
+<style>
+  body { font-family: Arial; margin: 20px; background: #f4f4f4; }
+  h2 { color: #333; }
+  input, select, button { margin: 5px; padding: 5px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 15px; background: white; }
+  th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+  th { background: #007bff; color: white; }
+  button { cursor: pointer; background: #007bff; color: white; border: none; border-radius: 4px; }
+  button:hover { background: #0056b3; }
+</style>
+</head>
+<body>
+
+<h2>Employee Management System</h2>
+
+<div>
+  <input type="text" id="name" placeholder="Name">
+  <input type="text" id="position" placeholder="Position">
+  <input type="number" id="salary" placeholder="Salary">
+  <input type="text" id="department" placeholder="Department">
+  <select id="availability">
+    <option value="true">Available</option>
+    <option value="false">Not Available</option>
+  </select>
+  <button onclick="addEmployee()">Add Employee</button>
+</div>
+
+<div>
+  <input type="text" id="search" placeholder="Search by name">
+  <button onclick="searchEmployee()">Search</button>
+  <button onclick="displayEmployees()">Show All</button>
+</div>
+
+<div>
+  <button onclick="sortBySalary(true)">Sort by Salary ↑</button>
+  <button onclick="sortBySalary(false)">Sort by Salary ↓</button>
+  <button onclick="calculateTotalSalary()">Total Active Salary</button>
+  <button onclick="departmentReport()">Department Report</button>
+</div>
+
+<table id="employeeTable">
+  <thead>
+    <tr>
+      <th>ID</th><th>Name</th><th>Position</th><th>Salary</th><th>Department</th><th>Available</th><th>Actions</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<script>
+let employees = [
+  { id: 1, name: "Seth", position: "Developer", salary: 50000, department: "IT", available: true },
+  { id: 2, name: "Anya", position: "Manager", salary: 65000, department: "HR", available: true },
+  { id: 3, name: "Riya", position: "Designer", salary: 45000, department: "Design", available: false }
+];
+
+function displayEmployees(list = employees) {
+  let tbody = document.querySelector("#employeeTable tbody");
+  tbody.innerHTML = "";
+  list.forEach(emp => {
+    let row = `<tr>
+      <td>${emp.id}</td>
+      <td>${emp.name}</td>
+      <td>${emp.position}</td>
+      <td>${emp.salary}</td>
+      <td>${emp.department}</td>
+      <td>${emp.available ? "Yes" : "No"}</td>
+      <td>
+        <button onclick="removeEmployee(${emp.id})">Remove</button>
+        <button onclick="updateEmployee(${emp.id})">Update</button>
+        <button onclick="toggleAvailability(${emp.id})">Toggle Availability</button>
+      </td>
+    </tr>`;
+    tbody.innerHTML += row;
+  });
+}
+
+function addEmployee() {
+  let name = document.getElementById("name").value.trim();
+  let position = document.getElementById("position").value.trim();
+  let salary = parseFloat(document.getElementById("salary").value);
+  let department = document.getElementById("department").value.trim();
+  let available = document.getElementById("availability").value === "true";
+
+  if (!name || !position || !salary || !department) {
+    alert("Please fill all fields!");
+    return;
+  }
+
+  let newEmployee = {
+    id: employees.length ? employees[employees.length - 1].id + 1 : 1,
+    name, position, salary, department, available
+  };
+
+  employees.push(newEmployee);
+  displayEmployees();
+}
+
+function removeEmployee(id) {
+  employees = employees.filter(emp => emp.id !== id);
+  displayEmployees();
+}
+
+function updateEmployee(id) {
+  let emp = employees.find(e => e.id === id);
+  if (!emp) return;
+
+  let newPos = prompt("Enter new position:", emp.position);
+  let newSal = prompt("Enter new salary:", emp.salary);
+  let newDept = prompt("Enter new department:", emp.department);
+  if (newPos) emp.position = newPos;
+  if (newSal) emp.salary = parseFloat(newSal);
+  if (newDept) emp.department = newDept;
+
+  displayEmployees();
+}
+
+function toggleAvailability(id) {
+  let emp = employees.find(e => e.id === id);
+  if (emp) emp.available = !emp.available;
+  displayEmployees();
+}
+
+function searchEmployee() {
+  let term = document.getElementById("search").value.toLowerCase();
+  let results = employees.filter(e => e.name.toLowerCase().includes(term));
+  displayEmployees(results);
+}
+
+function calculateTotalSalary() {
+  let total = employees
+    .filter(e => e.available)
+    .reduce((sum, e) => sum + e.salary, 0);
+  alert("Total Salary of Active Employees: ₹" + total);
+}
+
+function departmentReport() {
+  let report = {};
+  employees.forEach(e => {
+    report[e.department] = (report[e.department] || 0) + e.salary;
+  });
+  let msg = "Department-wise Salary Report:\n";
+  for (let dept in report) {
+    msg += `${dept}: ₹${report[dept]}\n`;
+  }
+  alert(msg);
+}
+
+function sortBySalary(asc = true) {
+  employees.sort((a, b) => asc ? a.salary - b.salary : b.salary - a.salary);
+  displayEmployees();
+}
+
+displayEmployees();
+</script>
+</body>
+</html>
